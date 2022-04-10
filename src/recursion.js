@@ -18,14 +18,14 @@
  * @param {number} number Number, factotial of which to be found
  * @returns {number} Factorial
  */
-const factorial1 = (number) => (number < 1 ? 1 : number * factorial1(number - 1));
+export const factorial1 = (number) => (number < 1 ? 1 : number * factorial1(number - 1));
 
 /**
   * This function calulates factorial of given number by the cycle
   * @param {number} number Number, factotial of which to be found
   * @returns {number} Factorial
   */
-const factorial2 = (number) => {
+export const factorial2 = (number) => {
   let factorial = 1;
   let counter = 1;
   while (counter <= number) {
@@ -41,7 +41,7 @@ const factorial2 = (number) => {
  * @param {number} denom n
  * @returns {number} (x^n)n!
  */
-const recursion1 = (numer, denom) => (denom < 1 ? 1 : numer / (denom * recursion1(numer, denom - 1)));
+export const recursion1 = (numer, denom) => (denom < 1 ? 1 : numer / (denom * recursion1(numer, denom - 1)));
 
 /**
  * This function calculaters remainder of first divided by second by recursion
@@ -49,7 +49,7 @@ const recursion1 = (numer, denom) => (denom < 1 ? 1 : numer / (denom * recursion
  * @param {number} second Second number
  * @returns {number} Calculated remainder
  */
-const modRecursion = (first, second) => (first < second ? first : mod(first - second, second));
+export const modRecursion = (first, second) => (first < second ? first : mod(first - second, second));
 
 /**
  * This function calculaters remainder of first divided by second by cycle
@@ -57,7 +57,7 @@ const modRecursion = (first, second) => (first < second ? first : mod(first - se
  * @param {number} second Second number
  * @returns {number} Calculated remainder
  */
-const modCycle = (first, second) => {
+export const modCycle = (first, second) => {
   let remainder = first;
   while (remainder >= second) {
     remainder -= second;
@@ -72,7 +72,7 @@ const modCycle = (first, second) => {
  * @param {number} degree Degree
  * @returns {number} Result of calculations - degree
  */
-const calcDegreeRecursion = (number, degree) => {
+export const calcDegreeRecursion = (number, degree) => {
   if (degree === 1) {
     return 0;
   }
@@ -93,7 +93,7 @@ const calcDegreeRecursion = (number, degree) => {
  * @param {number} degree Degree
  * @returns {number} Result of calculations - degree
  */
-const calcDegreeCycle = (number, degree) => {
+export const calcDegreeCycle = (number, degree) => {
   if (degree === 1) {
     return 0;
   }
@@ -113,3 +113,26 @@ const calcDegreeCycle = (number, degree) => {
   where it is not not the value of the numbers,
   but the set of digits that make up the records of these numbers.
 */
+
+/**
+ * This function finds max number among all numbers in given combination
+ * @param {number} number - Combination of numbers
+ * @returns {number} Max number
+ */
+export const findMaxNumberInRecordByRecursion = (number) => {
+  if (number < 10) {
+    return number;
+  }
+  let maxNumber = findMaxNumberInRecordByRecursion(number / 10);
+  const lastNumber = number % 10;
+  return lastNumber > maxNumber ? maxNumber = lastNumber : maxNumber;
+};
+
+const reverseNumber = (number) => {
+  if(number < 10) {
+    console.log(number);
+  }
+  let lastNumber = number % 10;
+  console.log(lastNumber);
+  console.log(reverseNumber(number / 10));
+}
