@@ -1,15 +1,15 @@
 /*
-  Here you can find solutions to palindromes 
+  Here you can find solutions to palindromes
   If you have your own working solution - do not hesitate to share it
 */
 
 /**
- * This functions checks if the given word is a palindrome 
+ * This functions checks if the given word is a palindrome
  * by comparing first and last symbols step by step
  * @param {string} word Word which is has to be checked if one is a palindrome
  * @returns {boolean} Result of checking
  */
-export const isPalindrome_1 = (word) => {
+export const isPalindrome1 = (word) => {
   const wordLength = word.length;
   if (wordLength < 2) {
     return true;
@@ -20,21 +20,20 @@ export const isPalindrome_1 = (word) => {
     return false;
   }
   const wordWithNoFirstAndLastChars = word.substring(1, lastChar);
-  return isPalindrome(wordWithNoFirstAndLastChars);
+  return isPalindrome1(wordWithNoFirstAndLastChars);
 };
 
 /**
- * This functions checks if the given word is a palindrome 
- * by creating new string, filling it by symbols backward and comparing with 
+ * This functions checks if the given word is a palindrome
+ * by creating new string, filling it by symbols backward and comparing with
  * the given one
  * @param {string} word Word which is has to be checked if one is a palindrome
  * @returns {boolean} Result of checking
  */
-export const isPalindrome_2 = (word) => {
+export const isPalindrome2 = (word) => {
   let newWord = '';
-  for(let i = word.length - 1; i >= 0; i -= 1) {
+  for (let i = word.length - 1; i >= 0; i -= 1) {
     newWord += word[i];
   }
   return word === newWord;
 };
-
