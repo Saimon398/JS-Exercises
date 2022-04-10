@@ -49,7 +49,7 @@ export const recursion1 = (numer, denom) => (denom < 1 ? 1 : numer / (denom * re
  * @param {number} second Second number
  * @returns {number} Calculated remainder
  */
-export const modRecursion = (first, second) => (first < second ? first : mod(first - second, second));
+export const modRecursion = (first, second) => (first < second ? first : modRecursion(first - second, second));
 
 /**
  * This function calculaters remainder of first divided by second by cycle
@@ -123,16 +123,47 @@ export const findMaxNumberInRecordByRecursion = (number) => {
   if (number < 10) {
     return number;
   }
-  let maxNumber = findMaxNumberInRecordByRecursion(number / 10);
+  let maxNumber = findMaxNumberInRecordByRecursion(Math.trunc(number / 10));
   const lastNumber = number % 10;
   return lastNumber > maxNumber ? maxNumber = lastNumber : maxNumber;
 };
 
-const reverseNumber = (number) => {
-  if(number < 10) {
-    console.log(number);
+/**
+ * This function reverses given string by recursion (FIRST WAY)
+ * @param {string} string Given string
+ * @returns {string} Reversed string
+ */
+const reverseStringByRecursion1 = (string) => {
+  const stringLength = string.length;
+  if (stringLength < 1) {
+    return string;
   }
-  let lastNumber = number % 10;
-  console.log(lastNumber);
-  console.log(reverseNumber(number / 10));
-}
+  const newString = string.slice(stringLength - 1);
+  return newString + reverseStringByRecursion1(string.slice(0, stringLength - 1));
+};
+
+/**
+ * This function reverses given string by recursion (Ternary operator is used)
+ * @param {string} string Given string
+ * @returns {string} Reversed string
+ */
+const reverseStringByRecursion2 = (string) => (string.length < 1 ? string : `${string.slice(-1)}${reverseStringByRecursion2(string.slice(0, -1))}`);
+
+/**
+ * This function reverses given number by cycle
+ * @param {number} number Number to be reversed
+ * @returns {number} Reversed number
+ */
+export const reverseNumberByCycle = (number) => {
+  let newNumber = '';
+  let counter = String(number).length - 1;
+  while (counter >= 0) {
+    newNumber += String(number)[counter];
+    counter -= 1;
+  }
+  return Number(newNumber);
+};
+
+// RECURSION AND SINGLE DIMENSION ARRAYS
+
+
