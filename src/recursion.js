@@ -166,4 +166,34 @@ export const reverseNumberByCycle = (number) => {
 
 // RECURSION AND SINGLE DIMENSION ARRAYS
 
+/**
+ * This function checks if the given string is palindrome by recursion
+ * @param {string} text Given string
+ * @returns {boolean} Result of checking
+ */
+export const isPalindromeRecursion = (text) => {
+  if (text.length < 2) {
+    return true;
+  }
+  const firstChar = text[0];
+  const lastChar = text[text.length - 1];
+  if (firstChar !== lastChar) {
+    return false;
+  }
+  return isPalindromeRecursion(text.substr(1, lastChar));
+};
 
+/**
+ * This function checks if the given string is palindrome by cycle
+ * @param {string} text Given string
+ * @returns {boolean} Result of checking
+ */
+export const isPalindromeCycle = (string) => {
+  const stringLength = string.length;
+  for (let i = 0, j = stringLength - 1; i < j; i += 1, j -= 1) {
+    if (string[i] !== string[j]) {
+      return false;
+    }
+  }
+  return true;
+};
