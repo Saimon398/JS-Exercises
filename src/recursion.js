@@ -106,6 +106,18 @@ export const calcDegreeCycle = (number, degree) => {
   return searchedDegree === 1 ? counter : -1;
 };
 
+/**
+ * This function finds value of Fibbonachi sequence under given number by recursion
+ * @param {number} number Given number
+ * @returns {number} Value under given number
+ */
+const isFibbonachiSequenceByRecursion = (number) => {
+  if (number < 3) {
+    return 1;
+  }
+  return isFibbonachiSequenceByRecursion(number - 2) + isFibbonachiSequenceByRecursion(number - 1);
+};
+
 // CONSTRUCTION OF RECURSIVE FUNCTIONS THAT DEPEND ON A NUMBER POSITION
 
 /*
@@ -148,6 +160,42 @@ const reverseStringByRecursion1 = (string) => {
  * @returns {string} Reversed string
  */
 const reverseStringByRecursion2 = (string) => (string.length < 1 ? string : `${string.slice(-1)}${reverseStringByRecursion2(string.slice(0, -1))}`);
+
+// Iterative process
+
+/**
+ * This function reverses given string by iterative recursion
+ * @param {string} string Given string
+ * @returns {string} Reversed string
+ */
+const reverseStrByIterativeRecursion = (string) => {
+  const stringLength = string.length;
+  const iter = (index, acc) => {
+    if (index < 0) {
+      return acc;
+    }
+    return iter(index - 1, `${acc}${string[index]}`);
+  };
+  return iter(stringLength - 1, '');
+};
+
+/**
+ * This functions seeks smallest divisor of given number by iterative recursion
+ * @param {number} number Number, smallest divisor of which to be found
+ * @returns {number} Smallest divisor
+ */
+const findSmallestDivisorByIterativeRecursion = (number) => {
+  const iter = (dividor) => {
+    if (dividor > Math.sqrt(number)) {
+      return number;
+    }
+    if (number % dividor === 0) {
+      return dividor;
+    }
+    return iter(dividor + 1);
+  };
+  return iter(2);
+};
 
 /**
  * This function reverses given number by cycle

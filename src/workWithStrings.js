@@ -2,6 +2,9 @@
   Here you can find a manual implementation of methods for Strings
 */
 
+// String.prototype.substring()
+// FIRST WAY
+
 /**
  * This function is a manual realization of "substr" method
  * @param {string} string String that should be processed
@@ -26,3 +29,25 @@ const getSubstr = (string, startIndex = 0, substrLength = string.length) => {
   }
   return resultString;
 };
+
+// SECOND WAY
+
+/**
+ * This function is a manual realization of "substr" method
+ * @param {string} string String that should be processed
+ * @param {number} begin Index which substring should be cutted from
+ * @param {number} end Index which substring should be cutted to
+ * @returns {string} New substring
+ */
+const getSubstr = (string, begin, end) => {
+  const iter = (acc, index) => {
+    if(index === end) {
+      return acc;
+    }
+    const newAcc = `${acc}${string[index]}`; 
+    return iter(newAcc, index + 1); 
+  }
+  return iter('', begin);
+};
+
+
