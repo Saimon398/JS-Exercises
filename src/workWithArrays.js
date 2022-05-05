@@ -19,3 +19,20 @@ const includes = (collection, number) => {
   };
   return iter(0);
 };
+
+/**
+ * This function flattens a given array
+ * @param {object} collection 
+ * @returns flattened array
+ */
+const flatten = (collection) => {
+  return [].concat(...collection.map(item => {
+    if(Array.isArray(item)) {
+      return flatten(item);
+    }
+    return item;
+  }));
+};
+
+
+
