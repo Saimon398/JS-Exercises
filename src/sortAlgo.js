@@ -1,6 +1,5 @@
 /**
- * Sort elements by bubble sort (in-place). Complexity - O(n^2)
- * This sort is simple but not effective
+ *Bubble Sort
  * @param {object} coll Collection to be sorted
  * @returns Sorted collection
  */
@@ -18,8 +17,7 @@ const bubbleSort = (coll) => {
 };
 
 /**
- * Sort elements by comb sort (in-place).
- * This sort is simple and a bit more effective than bubble sort
+ * Comb Sort
  * @param {object} coll Collection to be sorted
  * @returns Sorted collection
  */
@@ -39,3 +37,34 @@ const combSort = (coll) => {
   return coll;
 };
 
+/**
+ * Find min index in the collection
+ * @param {collection} coll Analyed collection
+ * @returns {number} Min index
+ */
+const findMinIndex = (coll) => {
+  let minIndex = 0;
+  for(let i = 0; i < coll.length; i++) {
+    const minElement = coll[minIndex];
+    const element = coll[i];
+    if(element < minElement) {
+      minIndex = i;
+    }
+  }
+  return minIndex;
+};
+
+/**
+ * Selection sort
+ * @param {object} coll Collection to be sorted
+ * @returns Sorted collection
+ */
+const selectionSort = (coll) => {
+  const result = [];
+  while(coll.length !== 0) {
+    const minIndex = findMinIndex(coll);
+    result.push(coll[minIndex]);
+    coll.splice(minIndex, 1)
+  }
+  return result;
+};
