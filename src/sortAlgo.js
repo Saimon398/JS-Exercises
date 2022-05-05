@@ -16,3 +16,26 @@ const bubbleSort = (coll) => {
   }
   return coll;
 };
+
+/**
+ * Sort elements by comb sort (in-place).
+ * This sort is simple and a bit more effective than bubble sort
+ * @param {object} coll Collection to be sorted
+ * @returns Sorted collection
+ */
+const combSort = (coll) => {
+  const collLength = coll.length;
+  const factor = 1.247;
+  let gapFactor = collLength / factor;
+  while(gapFactor > 1) {
+    const gap = Math.round(gapFactor);
+    for(let i = 0, j = gap; j < collLength; i++, j++) {
+      if(coll[i] > coll[j]) {
+        [coll[i], coll[j]] = [coll[j], coll[i]];;
+      }
+    }
+    gapFactor = gapFactor / factor;
+  }
+  return coll;
+};
+
